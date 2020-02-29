@@ -1,3 +1,9 @@
-afficher "Taper un nombre SVP: "
-demander n
-Afficher ("Bienvenue à la wild ")*n
+#demander(n)
+nombre = int(input("Taper un nombre SVP: "))
+for loop in range(nombre):
+  #jusqu’à ce que(n)
+  #traitement
+  #afficher ("Bienvenue à la wild ")
+  print("Bienvenue à la wild ")
+  #fin Jusqu’à ce que(n)
+  

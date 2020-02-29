@@ -1,0 +1,3 @@
+afficher "Taper un nombre SVP: "
+demander n
+Afficher ("Bienvenue à la wild ")*n

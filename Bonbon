@@ -1,0 +1,31 @@
+
+Variables
+  demander argent
+  demander prix 
+
+resultat
+  nombre de bonbons = 0 
+ 
+DEBUT
+  Pour boucle (argent), faire
+    Tant que argent > 0 
+      argent = argent - prix
+      nombre de bonbons = nombre de bonbons + 1
+    Fin Tant que
+
+  Retourner nombre de bonbons
+
+FIN
+
+
+argent = int(input())
+prix = int(input())
+bonbon = 0 
+
+for loop in range(argent):
+   if argent > prix:
+      argent = argent - prix
+      bonbon = bonbon +1
+
+print(bonbon)  
+

@@ -1,0 +1,52 @@
+Récupère tous les champs pour les sorciers nés entre 1975 et 1985
+
+mysql> SELECT * FROM wizard WHERE birthday > '1974-12-31' AND birthday < '1986-01-01';
++----+-----------+----------+------------+-------------+---------------------------------------+-----------+
+| id | firstname | lastname | birthday   | birth_place | biography                             | is_muggle |
++----+-----------+----------+------------+-------------+---------------------------------------+-----------+
+|  1 | dudley    | dursley  | 1980-06-23 |             | Cousin d'Harry                        |         1 |
+|  2 | harry     | potter   | 1980-07-31 | london      |                                       |         0 |
+|  3 | hermione  | granger  | 1979-09-19 |             | Friend of Harry Potter                |         0 |
+|  5 | ron       | weasley  | 1980-03-01 |             | Best friend of Harry                  |         0 |
+|  6 | ginny     | weasley  | 1981-08-11 |             | Sister of Ron and girlfriend of Harry |         0 |
+|  7 | fred      | weasley  | 1978-04-01 |             |                                       |         0 |
+|  8 | george    | weasley  | 1978-04-01 |             |                                       |         0 |
+| 11 | drago     | malefoy  | 1980-06-05 |             |                                       |         0 |
+| 15 | dudley    | dursley  | 1980-06-23 |             | Cousin d'Harry                        |         1 |
++----+-----------+----------+------------+-------------+---------------------------------------+-----------+
+9 rows in set (0.00 sec)
+
+Le prénom uniquement des sorciers dont le prénom commence par la lettre ‘H’
+
+mysql> select * from wizard where firstname like "H%";
++----+-----------+----------+------------+-------------+------------------------+-----------+
+| id | firstname | lastname | birthday   | birth_place | biography              | is_muggle |
++----+-----------+----------+------------+-------------+------------------------+-----------+
+|  2 | harry     | potter   | 1980-07-31 | london      |                        |         0 |
+|  3 | hermione  | granger  | 1979-09-19 |             | Friend of Harry Potter |         0 |
++----+-----------+----------+------------+-------------+------------------------+-----------+
+2 rows in set (0.00 sec)
+
+Les prénom et nom de tous les membres de la famille ‘Potter’, classés par ordre de prénom
+
+mysql> select * from wizard where firstname like "H%";
++----+-----------+----------+------------+-------------+------------------------+-----------+
+| id | firstname | lastname | birthday   | birth_place | biography              | is_muggle |
++----+-----------+----------+------------+-------------+------------------------+-----------+
+|  2 | harry     | potter   | 1980-07-31 | london      |                        |         0 |
+|  3 | hermione  | granger  | 1979-09-19 |             | Friend of Harry Potter |         0 |
++----+-----------+----------+------------+-------------+------------------------+-----------+
+2 rows in set (0.00 sec)
+
+
+Le prénom, nom et date de naissance du plus vieux sorcier (doit fonctionner quelque soit le contenu de la table)
+
+mysql> SELECT firstname, lastname, birthday from wizard order by birthday ASC limit 1; 
++-----------+------------+------------+
+| firstname | lastname   | birthday   |
++-----------+------------+------------+
+| albus     | dumbledore | 1881-07-01 |
++-----------+------------+------------+
+1 row in set (0.00 sec)
+
+

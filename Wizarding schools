@@ -32,7 +32,7 @@ Rows matched: 1  Changed: 1  Warnings: 0
 
 3/ Requête de modification 2
 
-mysql> update school set country = "Sweden" Where id = 3;
+mysql> update school set capacity = 700 where id = 7; 
 Query OK, 1 row affected (0.00 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 

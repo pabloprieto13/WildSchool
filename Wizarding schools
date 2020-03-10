@@ -1,0 +1,58 @@
+1 requête d’insertion:
+
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Beauxbatons Academy of Magic','France','550');
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Castelobruxo', 'Brazil','380');
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Durmstrang Institute', 'Norway','570');
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Hogwarts School of Witchcraft and Wizardry ', 'United Kingdom','450');
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Ilvermorny School of Witchcraft and Wizardry', 'USA','300');
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Koldovstoretz', 'USA','125');
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Mahoutokoro School of Magic ', 'Japan','800');
+INSERT INTO `wild_db_quest`.`school` (`name`, `country`,`capacity`) VALUES ('Uagadou School of Magic', 'Uganda','350');
+
+mysql> SELECT * FROM school;
++----+----------------------------------------------+----------+----------------+
+| id | name                                         | capacity | country        |
++----+----------------------------------------------+----------+----------------+
+|  1 | Beauxbatons Academy of Magic                 |      550 | France         |
+|  2 | Castelobruxo                                 |      380 | Brazil         |
+|  3 | Durmstrang Institute                         |      570 | Norway         |
+|  4 | Hogwarts School of Witchcraft and Wizardry   |      450 | United Kingdom |
+|  5 | Ilvermorny School of Witchcraft and Wizardry |      300 | USA            |
+|  6 | Koldovstoretz                                |      125 | USA            |
+|  7 | Mahoutokoro School of Magic                  |      800 | Japan          |
+|  8 | Uagadou School of Magic                      |      350 | Uganda         |
++----+----------------------------------------------+----------+----------------+
+8 rows in set (0.00 sec)
+
+2/ Requêtes de modification 1  
+
+mysql> update school set country = "Sweden" Where id = 3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+3/ Requête de modification 2
+
+mysql> update school set country = "Sweden" Where id = 3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+4/Requête de suppression
+
+mysql> DELETE FROM school WHERE name like '%magic%';
+Query OK, 3 rows affected (0.00 sec)
+
+mysql> select * from school; 
++----+----------------------------------------------+----------+----------------+
+| id | name                                         | capacity | country        |
++----+----------------------------------------------+----------+----------------+
+|  2 | Castelobruxo                                 |      380 | Brazil         |
+|  3 | Durmstrang Institute                         |      570 | Sweden         |
+|  4 | Hogwarts School of Witchcraft and Wizardry   |      450 | United Kingdom |
+|  5 | Ilvermorny School of Witchcraft and Wizardry |      300 | USA            |
+|  6 | Koldovstoretz                                |      125 | USA            |
++----+----------------------------------------------+----------+----------------+
+5 rows in set (0.00 sec)
+
+
+
+

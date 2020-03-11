@@ -1,0 +1,42 @@
+REQUETE 1 : 
+
+mysql> SELECT wizard.lastname, wizard.firstname, player.role, team.name FROM wizard JOIN player ON wizard.id = player.id JOIN team ON wizard.id = team.id order by name, role, lastname, firstname;
++----------+-----------+--------+------------+
+| lastname | firstname | role   | name       |
++----------+-----------+--------+------------+
+| Abbott   | Hannah    | beater | Gryffindor |
+| Nigellus | Phineas   | chaser | Hufflepuff |
+| Bell     | Katie     | chaser | Ravenclaw  |
+| Binns    | Cuthbert  | seeker | Slytherin  |
++----------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+Requete 2 :
+
+mysql> SELECT wizard.lastname, wizard.firstname, player.role FROM wizard JOIN player ON wizard.id = player.id WHERE role = 'seeker' ORDER BY lastname, firstname;
++------------+-----------+--------+
+| lastname   | firstname | role   |
++------------+-----------+--------+
+| Binns      | Cuthbert  | seeker |
+| Corner     | Michael   | seeker |
+| Creevey    | Colin     | seeker |
+| Goyle      | Gregory   | seeker |
+| Gryffindor | Godric    | seeker |
+| Hufflepuff | Helga     | seeker |
+| Lestrange  | Rabastan  | seeker |
+| Malfoy     | Narcissa  | seeker |
+| Ravenclaw  | Rowena    | seeker |
+| Slytherin  | Salazar   | seeker |
+| Trelawney  | Sybill    | seeker |
+| Umbridge   | Dolores   | seeker |
+| Vane       | Romilda   | seeker |
+| Weasley    | Fred      | seeker |
+| Weasley    | Ronald    | seeker |
+| Weasley    | William   | seeker |
++------------+-----------+--------+
+16 rows in set (0.00 sec)
+
+Requete 3 
+
+SELECT wizard.lastname, wizard.firstname, player.role FROM wizard JOIN player ON wizard.id = player.id WHERE role is NULL
+Empty set (0.00 sec)

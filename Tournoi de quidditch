@@ -120,5 +120,19 @@ mysql> SELECT wizard.lastname, wizard.firstname, player.role FROM wizard JOIN pl
 
 Requete 3 
 
-SELECT wizard.lastname, wizard.firstname, player.role FROM wizard JOIN player ON wizard.id = player.id WHERE role is NULL
-Empty set (0.00 sec)
+SELECT wizard.firstname, wizard.lastname, player.role FROM wizard left JOIN player ON wizard.id = player.wizard_id  WHERE role is null;
++-----------+----------+------+
+| firstname | lastname | role |
++-----------+----------+------+
+| Terry     | Boot     | NULL |
+| Crabbe    |          | NULL |
+| Remus     | Lupin    | NULL |
+| Padma     | Patil    | NULL |
+| Parvati   | Patil    | NULL |
+| Demelza   | Robins   | NULL |
+| Horace    | Slughorn | NULL |
+| Charles   | Weasley  | NULL |
+| Molly     | Weasley  | NULL |
++-----------+----------+------+
+9 rows in set (0.01 sec)
+

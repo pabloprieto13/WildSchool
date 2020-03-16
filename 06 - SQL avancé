@@ -1,0 +1,18 @@
+1/ Retourne le nom des équipes et le nombre de joueurs par équipe, le tout classé par nombre de joueurs par équipe, de la plus nombreuse à la moins nombreuse. 
+
+mysql> SELECT COUNT(wizard.firstname), team.name 
+    -> FROM wizard 
+    -> JOIN player ON wizard.id = player.wizard_id
+    -> JOIN team ON player.team_id = team.id
+    -> GROUP BY team.name
+    -> ORDER BY COUNT(wizard.firstname) DESC;
++-------------------------+------------+
+| COUNT(wizard.firstname) | name       |
++-------------------------+------------+
+|                      36 | Gryffindor |
+|                      21 | Slytherin  |
+|                      15 | Ravenclaw  |
+|                      12 | Hufflepuff |
++-------------------------+------------+
+4 rows in set (0.00 sec)
+

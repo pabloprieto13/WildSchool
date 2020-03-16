@@ -16,3 +16,44 @@ mysql> SELECT COUNT(wizard.firstname), team.name
 +-------------------------+------------+
 4 rows in set (0.00 sec)
 
+2/ Retourne uniquement les noms des équipes complètes (ayant 14 joueurs ou plus, c’est-à- dire 7 joueurs et 7 remplaçants minimum), classés par ordre alphabétique.2/ 
+
+mysql> SELECT COUNT(wizard.firstname), team.name 
+    -> FROM wizard 
+    -> JOIN player ON wizard.id = player.wizard_id
+    -> JOIN team ON player.team_id = team.id
+    -> GROUP BY team.name
+    -> HAVING COUNT(wizard.firstname) > 14
+    -> ORDER BY team.name ASC;
++-------------------------+------------+
+| COUNT(wizard.firstname) | name       |
++-------------------------+------------+
+|                      36 | Gryffindor |
+|                      15 | Ravenclaw  |
+|                      21 | Slytherin  |
++-------------------------+------------+
+3 rows in set (0.00 sec)
+
+3/ L’entraîneur des Gryffondor est superstitieux, son jour préféré est le lundi. Retourne la liste des joueurs de son équipe qui ont été enrôlés un lundi (il souhaite les faire jouer en priorité), et classe les résultats par date d’enrôlement chronologique.
+
+mysql> SELECT wizard.firstname, wizard.lastname, dayname(player.enrollement_date), player.enrollement_date, team.name 
+    -> FROM wizard 
+    -> JOIN player ON wizard.id = player.wizard_id
+    -> JOIN team ON player.team_id = team.id
+    -> WHERE team.name = 'Gryffindor' 
+    -> HAVING dayname(player.enrollement_date) = 'Monday'
+    -> ORDER BY player.enrollement_date ASC;
++-----------+------------+----------------------------------+------------------+------------+
+| firstname | lastname   | dayname(player.enrollement_date) | enrollement_date | name       |
++-----------+------------+----------------------------------+------------------+------------+
+| George    | Weasley    | Monday                           | 1991-08-26       | Gryffindor |
+| Alice     | Longbottom | Monday                           | 1992-02-17       | Gryffindor |
+| Cadogan   |            | Monday                           | 1993-01-04       | Gryffindor |
+| Godric    | Gryffindor | Monday                           | 1993-08-30       | Gryffindor |
+| Sirius    | Black      | Monday                           | 1994-01-10       | Gryffindor |
+| Aberforth | Dumbledore | Monday                           | 1995-04-24       | Gryffindor |
+| Augusta   | Longbottom | Monday                           | 1999-10-25       | Gryffindor |
++-----------+------------+----------------------------------+------------------+------------+
+7 rows in set (0.00 sec)
+
+
